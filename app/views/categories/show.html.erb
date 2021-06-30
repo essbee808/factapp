@@ -3,3 +3,7 @@
 
 <h2><%= @category.name %></h2>
 <h2><%= @category.description %></h2>
+
+<%= @category.posts.each do |post| %>
+    <p><%= link_to post.name, post_path(post) %></p>
+<% end %>

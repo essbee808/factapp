@@ -4,17 +4,12 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.create(post_params)
+    @post = Post.new(post_params)
+    @category = Category.find_or_create_by(name: @post.category_name)
+    @category.posts << @post
+    @post.save
     # (name: "Another Resource", description: "Short desc", organization: "FACT", category_name: "Vocational")
-    redirect_to posts_path(@post)
-    # if @post.valid?
-    #   @post.save
-    #   #raise params.inspect
-    #   redirect_to post_path(@post)
-    # else
-    #   render :new
-    # end
-    
+    redirect_to category_path(@category)
   end
 
   def index
@@ -26,6 +21,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
   end
 
   private
