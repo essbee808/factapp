@@ -8,7 +8,7 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.new(categories_params)
+    @category = Category.new(category_params)
     #raise params.inspect
     if @category.valid?
       @category.save
@@ -23,12 +23,12 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-    @category = Category.find(categories_params)
+    @category = Category.find(category_params)
   end
 
   private
 
-  def categories_params
-    params.require(:category).permit(:name, :description)
+  def category_params
+    params.require(:category).permit(:name, :description, post_ids: [])
   end
 end

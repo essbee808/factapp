@@ -1,2 +1,34 @@
 <h1>Posts#new</h1>
 <p>Find me in app/views/posts/new.html.erb</p>
+
+<!-- creates drop down selection input where user can pick a category
+OR create a new category -->
+<%= form_for @post do |f| %>
+    <%= f.label :category_name %>
+    <%= f.text_field :category_name, list: "categories_autocomplete" %>
+    <datalist id="categories_autocomplete">
+        <% Category.all.each do |category| %>
+            <option value="<%= category.name %>">
+        <% end %>
+    </datalist><br>
+    <br>
+    <%= f.label :organization %>
+    <%= f.text_field :organization %><br>
+    <br>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %><br>
+    <%= f.submit %>
+<% end %>
+
+
+
+
+<!-- form that does not enable user to create a new category
+<%= form_for @post do |f| %>
+    <%= f.collection_select :category_name, Category.all, :name, :name %>
+    <%= f.text_field :name %>
+    <%= f.text_field :organization %>
+    <%= f.text_area :description %>
+    <%= f.submit %>
+<% end %>
+-->
