@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  resources :goals, :users
+ 
+  resources :categories, :users, :posts
   # get 'goals/index'
   # get 'goals/new'
   # get 'goals/show'

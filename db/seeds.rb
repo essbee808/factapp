@@ -7,4 +7,3 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 new_user = User.create(first_name: "Alicia", last_name: "Keys")
-new_goal = Goal.create(name: "Budgeting")
